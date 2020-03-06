@@ -23,10 +23,27 @@ class LinkedList{
         newNode.previous = curr;
         curr.next = newNode;  
     }
+
+    remove(item){
+        let curr = this.head;
+        while(curr.next != null){
+            if( curr.data == item){
+                curr.next.previous = curr.previous;
+                curr.previous.next = curr.next;
+
+                return true;
+            }
+            curr = curr.next;
+        }
+
+        return false;
+    }
+
 }
 
 let llist =  new LinkedList();
 llist.insert('Mombasa');
 llist.insert('Nairobi');
 llist.insert('Kisumu');
-console.log(llist);
+llist.remove('Mombasa'); //this line removes mombasa and puts nairobi in its place
+console.log(llist.head.next.next.data);
