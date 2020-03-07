@@ -44,7 +44,22 @@ class LinkedList{
     }
 
     insertAfter(item, after){ // inserts a node after a given item
+        let newNode = new Node(item);
+        let curr = this.head;
 
+        while(curr.next != null){
+            if (curr.data = after){
+                newNode.previous = curr;
+                newNode.next = curr.next;
+                curr.next.previous = newNode;
+                curr.next = newNode;
+                return true
+            }
+
+            curr = curr.next;
+        }
+
+        return true;
     }
 
     remove(item){ // removes a node with the givrn item from the linked list
