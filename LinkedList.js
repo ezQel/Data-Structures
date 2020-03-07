@@ -29,8 +29,8 @@ class LinkedList{
         let newNode = new Node(item);
         let curr = this.head;
 
-        while(curr.next != null){
-            if(curr.data = before){
+        while(curr != null){
+            if(curr.data == before){
                 curr.previous.next = newNode;
                 newNode.previous = curr.previous;
                 curr.previous = newNode;
@@ -47,8 +47,8 @@ class LinkedList{
         let newNode = new Node(item);
         let curr = this.head;
 
-        while(curr.next != null){
-            if (curr.data = after){
+        while(curr != null){
+            if (curr.data == after){
                 newNode.previous = curr;
                 newNode.next = curr.next;
                 curr.next.previous = newNode;
@@ -90,12 +90,28 @@ class LinkedList{
         return curr;
     }
 
+    show(){ // prints out all the nodes of the linked list
+        let curr = this.head;
+        let prev;
+        let nxt;
+        
+        while(curr != null){
+            prev = curr.previous;
+            nxt = curr.next;
+            
+            console.log(curr.data, 'previous:',
+             (prev == null) ? null : prev.data,
+              'next:', (nxt == null) ? null : nxt.data);
+            curr = curr.next;
+        }
+    }
+
 }
 
 let llist =  new LinkedList();
 llist.insert('Mombasa');
 llist.insert('Nairobi');
 llist.insert('Kisumu');
-llist.remove('Mombasa'); //this line removes mombasa and puts nairobi in its place
-console.log(llist.find('Mombasa'));
-console.log(llist.find('Kisumu').data);
+llist.show();
+llist.remove('Mombasa');
+llist.show()
