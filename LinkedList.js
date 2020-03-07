@@ -21,11 +21,26 @@ class LinkedList{
 
         newNode.next = null;
         newNode.previous = curr;
-        curr.next = newNode;  
+        curr.next = newNode;
+        return true;  
     }
 
-    insertBefore(item, before){ // inserts a node before a given item
+    insertBefore(item, before){ // inserts an item before a given item
+        let newNode = new Node(item);
+        let curr = this.head;
 
+        while(curr.next != null){
+            if(curr.data = before){
+                curr.previous.next = newNode;
+                newNode.previous = curr.previous;
+                curr.previous = newNode;
+                newNode.next = curr;
+                return true;
+            }
+            curr = curr.next;
+        }
+
+        return false;
     }
 
     insertAfter(item, after){ // inserts a node after a given item
