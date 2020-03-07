@@ -94,16 +94,21 @@ class LinkedList{
         let curr = this.head;
         let prev;
         let nxt;
+        let line = '';
         
         while(curr != null){
             prev = curr.previous;
             nxt = curr.next;
-            
-            console.log(curr.data, 'previous:',
-             (prev == null) ? null : prev.data,
-              'next:', (nxt == null) ? null : nxt.data);
+
+            // console.log(curr.data, 'previous:',
+            //  (prev == null) ? null : prev.data,
+            //   'next:', (nxt == null) ? null : nxt.data);
+            // curr = curr.next;
+            line += curr.data + ' -> ';
             curr = curr.next;
         }
+        console.log(line);
+        // console.log('-----------------------------------');
     }
 
 }
